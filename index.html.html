@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udit Singh - Technical Builder & Data Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-accent: #666666;
+            --accent-cyan: #00ffff;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #ff6b35;
+            --accent-green: #00ff88;
+            --accent-pink: #ff0080;
+            --gradient-primary: linear-gradient(135deg, #00ffff, #8b5cf6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: radial-gradient(ellipse at top, #1a1a2e 0%, #16213e 30%, #0a0a0a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .btn-creative {
+            position: relative;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .btn-creative::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-creative:hover::before {
+            left: 0;
+        }
+
+        .btn-creative:hover {
+            color: var(--bg-primary);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Hero */
+        .creative-hero {
+            padding: 3rem 0;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .greeting-text {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .intro-line {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .intro-text {
+            font-size: 3.5rem;
+            font-weight: 300;
+        }
+
+        .name-highlight {
+            font-size: 4.5rem;
+            font-weight: 700;
+            animation: nameGlow 3s ease-in-out infinite alternate;
+        }
+
+        .hero-description {
+            margin-bottom: 2rem;
+            max-width: 550px;
+        }
+
+        /* Skills */
+        .skills-section {
+            background: radial-gradient(ellipse at top, #1a1a2e 0%, #16213e 30%, #0a0a0a 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-accent);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-item:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.1);
+        }
+
+        .skill-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Projects */
+        .projects-showcase {
+            background: radial-gradient(ellipse at top, #1a1a2e 0%, #16213e 30%, #0a0a0a 100%);
+            padding: 3rem 0;
+        }
+
+        .showcase-title {
+            font-size: 3.5rem;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .project-card.featured {
+            grid-row: span 2;
+        }
+
+        .project-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-description {
+            color: var(--text-accent);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: radial-gradient(ellipse at top, #1a1a2e 0%, #16213e 30%, #0a0a0a 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0;
+        }
+
+        .contact-title {
+            font-size: 4rem;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .detail-item:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateX(10px);
+        }
+
+        .detail-icon {
+            font-size: 1.5rem;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+        }
+
+        /* Animations */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes nameGlow {
+            0%, 100% { text-shadow: 0 0 20px currentColor; }
+            50% { text-shadow: 0 0 40px currentColor; }
+        }
+
+        /* Particles - very subtle */
+        .particles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .projects-grid { grid-template-columns: 1fr 1fr; }
+            .project-card.featured { grid-row: span 1; grid-column: span 2; }
+            .contact-info { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .greeting-text, .intro-text { font-size: 2.5rem; }
+            .name-highlight { font-size: 3.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .showcase-title { font-size: 2.8rem; }
+            .contact-title { font-size: 2.8rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .project-card.featured { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-bg" id="particles"></div>
+
+    <!-- Hero -->
+    <section class="creative-hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="greeting-text">Hello,</div>
+                <div class="intro-line">
+                    <span class="intro-text">I am </span>
+                    <span class="name-highlight gradient-text">Udit</span>
+                    <span class="intro-text">,</span>
+                </div>
+                <div class="hero-description">
+                    <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); margin-bottom: 0.8rem;">
+                        I build systems that work with data.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); font-weight: 400;">
+                        Analytics pipelines, statistical models, dashboards, REST APIs - focused on real business impact.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Skills <span class="gradient-text">and tools</span></h2>
+            <p class="section-subtitle">
+                Technologies and frameworks I work with across the data stack.
+            </p>
+            
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3 class="skill-name">📊 Data & Analytics</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Statistical Analysis</span>
+                        <span class="skill-tag">GARCH Models</span>
+                        <span class="skill-tag">Time Series</span>
+                        <span class="skill-tag">Data Mining</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <h3 class="skill-name">📈 Business Intelligence</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">DAX</span>
+                        <span class="skill-tag">Power Query</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">KPI Dashboards</span>
+                        <span class="skill-tag">Data Storytelling</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <h3 class="skill-name">🔧 Data Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ETL Pipelines</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Data Modeling</span>
+                        <span class="skill-tag">Schema Design</span>
+                        <span class="skill-tag">Data Validation</span>
+                        <span class="skill-tag">Performance Optimization</span>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <h3 class="skill-name">💻 Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Backend Systems</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1rem;">
+                <h3 style="font-size: 1.8rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-primary);">Professional Experience</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem;">
+                    <div class="skill-item">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                        <h4 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">Production Experience</h4>
+                        <p style="color: var(--text-accent);">Built SQL-backed systems supporting 50,000+ records with 99.5% data accuracy at Orrizonte Technologies.</p>
+                    </div>
+                    <div class="skill-item">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                        <h4 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">Performance Optimization</h4>
+                        <p style="color: var(--text-accent);">Improved SQL query performance by 85% (3s → 500ms) through indexing strategies and query refactoring.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects-showcase">
+        <div class="container">
+            <h2 class="showcase-title">
+                Featured <span class="gradient-text">Work</span>
+            </h2>
+            
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-icon" style="background: linear-gradient(135deg, #00ffff, #8b5cf6);">📈</div>
+                    <h3 class="project-title">MarketPulse</h3>
+                    <p class="project-subtitle" style="color: #00ffff;">Financial Analytics Platform</p>
+                    <p class="project-description">
+                        Built an end-to-end analytics pipeline processing 250,000+ daily price points with GARCH(1,1) volatility modeling achieving 82% accuracy. 
+                        Python ETL pipeline with PostgreSQL database and Power BI dashboards.
+                    </p>
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(255, 255, 255, 0.02); border-radius: 8px;">
+                        <strong>🎯 Key Impact:</strong><br>
+                        • 82% Volatility Forecast Accuracy<br>
+                        • 250K+ Data Points Processed Daily<br>
+                        • 99.5% Data Accuracy Maintained<br>
+                        • 90% Reduction in Analysis Time
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://github.com/udit-oss/Market_Pulse_Daily_Volatility_And_Returns_Dashboard" target="_blank" rel="noopener noreferrer" class="btn-creative" style="font-size: 0.85rem; padding: 0.75rem 1.5rem;">
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon" style="background: linear-gradient(135deg, #ff6b35, #00ff88);">📊</div>
+                    <h3 class="project-title">Electrohub DataLens</h3>
+                    <p class="project-subtitle" style="color: #ff6b35;">Retail Analytics Dashboard</p>
+                    <p class="project-description">
+                        Transformed multi-sheet Excel data (3,510 transactions) into optimized star schema. 
+                        Built KPI dashboards tracking $122M sales with interactive filtering.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://github.com/udit-oss/Electrohub_Datalens" target="_blank" rel="noopener noreferrer" class="btn-creative" style="font-size: 0.8rem; padding: 0.6rem 1.2rem;">
+                            GitHub →
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon" style="background: linear-gradient(135deg, #ff0080, #00ffff);">🎮</div>
+                    <h3 class="project-title">PixelMetrics</h3>
+                    <p class="project-subtitle" style="color: #ff0080;">Gaming Analytics (In Progress)</p>
+                    <p class="project-description">
+                        Scraping and analyzing 10K+ games from Steam using Python ETL pipeline. 
+                        Building normalized database schema for gaming industry insights.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://github.com/udit-oss/Pixel_Metrics" target="_blank" rel="noopener noreferrer" class="btn-creative" style="font-size: 0.8rem; padding: 0.6rem 1.2rem;">
+                            GitHub →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-info">
+                <div>
+                    <h2 class="contact-title">
+                        Let's work <span class="gradient-text">together</span>
+                    </h2>
+                    <p style="color: var(--text-accent); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.7;">
+                        Available for full-time opportunities and project-based consulting. 
+                        From financial analytics to business intelligence systems, I build solutions that drive decisions.
+                    </p>
+                </div>
+                
+                <div>
+                    <div class="detail-item">
+                        <div class="detail-icon">📧</div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: var(--text-accent);">Email</div>
+                            <a href="mailto:udit9503@gmail.com" style="color: var(--text-primary); text-decoration: none;">udit9503@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">💼</div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: var(--text-accent);">LinkedIn</div>
+                            <a href="https://www.linkedin.com/in/udit-singh-43862b187/" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); text-decoration: none;">/in/udit-singh-43862b187</a>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">📍</div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: var(--text-accent);">Location</div>
+                            <span style="color: var(--text-primary);">Dehradun, India</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">💻</div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: var(--text-accent);">GitHub</div>
+                            <a href="https://github.com/udit-oss" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); text-decoration: none;">/udit-oss</a>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="mailto:udit9503@gmail.com" class="btn-creative">Get in touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Very subtle particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#00ffff', '#8b5cf6', '#ff6b35'];
+            
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        createParticles();
+    </script>
+</body>
+</html>
